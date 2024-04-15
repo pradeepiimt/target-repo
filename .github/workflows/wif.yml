@@ -1,0 +1,25 @@
+name: Trigger Other Workflow
+on:
+  push:
+    branches:
+    - feature/pradeep
+  workflow_dispatch:
+
+jobs:
+  get-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Successful Step
+        run: echo "This step is successful"
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: 'projects/132917503746/locations/global/workloadIdentityPools/githubaction/providers/github'
+          service_account: 'github-actions@exam-preparation-300390.iam.gserviceaccount.com'
+      - id: gcloud
+        name: Access Secret Details
+        run: |
+          gcloud secrets versions access latest --secret=github-action

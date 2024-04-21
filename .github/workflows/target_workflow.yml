@@ -26,4 +26,4 @@ jobs:
       - name: Another Successful Step
         run: |
           echo "This step is also successful"  
-          sleep 50s 
+          sleep 100s 

@@ -1,8 +1,8 @@
 name: Trigger Other Workflow
 on:
-  push:
-    branches:
-    - feature/pradeep
+  # push:
+  #   branches:
+  #   - feature/pradeep
   workflow_dispatch:
 
 jobs:
